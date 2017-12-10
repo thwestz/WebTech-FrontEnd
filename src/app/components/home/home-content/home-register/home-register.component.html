@@ -1,0 +1,90 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col">
+      <a routerLink="../register">
+        <h4>Sign Up</h4>
+      </a>
+    </div>
+  </div>
+  <br>
+  <div class="input-group">
+    <span >Email Address</span>
+   </div>
+  <br>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-addon" id="basic-addon2">@example.com</span>
+  </div>
+  <br>
+  <label for="basic-url">Your vanity URL</label>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <span class="input-group-addon">.00</span>
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <span class="input-group-addon">0.00</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+ -->
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h4><b>Sign-Up</b></h4>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 mb-3">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="example@hotmail.com" [(ngModel)] = "user.email" required>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 mb-3">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="password"  [(ngModel)] = "user.password"required>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 mb-3">
+        <label for="name">First name</label>
+        <input type="text" class="form-control" id="name" placeholder="First name" [(ngModel)] = "user.fname" required>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 mb-3">
+        <label for="last">Last name</label>
+        <input type="text" class="form-control" id="last" placeholder="Last name" [(ngModel)] = "user.lname" required>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <button class="btn btn-primary" type="submit" (click) = "registed()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+</div>

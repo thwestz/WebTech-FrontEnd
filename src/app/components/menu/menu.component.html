@@ -1,0 +1,23 @@
+<ng-sidebar-container>
+    <!-- A sidebar -->
+    <ng-sidebar position="right" [(opened)]="_opened" 
+     [closeOnClickOutside]="true" [showBackdrop]="true" 
+     [autoFocus]="true" 
+     (onCloseStart)="_toggleClose()">
+      <div class="list-group">
+        <a class="list-group-item" routerLink="" (click)="_toggleClose()">
+          <h3 class="text-center"></h3>
+        </a>
+        <!-- <a class="list-group-item" routerLink="" routerLinkActive="active" (click)="_toggleClose()"></a> -->
+        <a class="list-group-item" routerLink="" (click)="_toggleClose()">Home</a>
+        <a class="list-group-item" routerLink="" (click)="_toggleClose()">Events</a>
+        <a class="list-group-item" routerLink="" (click)="_toggleClose()">Profile</a>
+        <a class="list-group-item" routerLink="" (click)="_toggleClose()">Log-out</a>
+      </div>
+    </ng-sidebar>
+    <ng-container ng-sidebar-content>
+      <app-navbar showSlideBar="true"></app-navbar>
+      <router-outlet><br></router-outlet>
+      <br>
+    </ng-container>
+  </ng-sidebar-container>
