@@ -11,6 +11,7 @@ import { UserService } from '../../../../services/user.service';
 })
 export class HomeRegisterComponent implements OnInit {
   user: User;
+  err : string[] = [];
   constructor(private userService: UserService) { }
 
   
@@ -19,14 +20,24 @@ export class HomeRegisterComponent implements OnInit {
   }
 
   registed() {
+    this.err = [];
+    if(!this.user.email){
+      this.err.push("Email")
+      return;
+    }
+    if(!this.user.password){
+      this.err.push("password")
+      return;
+    }
+
     this.user.status = STATUS.normal;
     this.user.types = TYPES.member;
 
-    this.userService.create(this.user).subscribe(user => {
-      console.log(user);
+    this.userService.create(this.user).subscribe( user => {
+
+    }, err => {
+      this.err.push(`This email already exists`);
     })
-    // this.userService.getUsers().subscribe(users => {
-    //   console.log(users);
-    // })
+
   }
 }

@@ -5,7 +5,8 @@ export enum STATUS {
 
 export enum TYPES {
     member,
-    admin
+    admin,
+    superadmin
 }
 
 export class User {

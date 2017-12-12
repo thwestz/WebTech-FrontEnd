@@ -8,19 +8,16 @@ import { HttpHeaders } from "@angular/common/http";
 
 
 @Injectable()
-export class UserService {
+export class LoginService {
 
-    private basePath: string = `http://localhost:5000/users`;
+    private basePath: string = `http://localhost:5000/auth`;
 
     constructor(
         private http: HttpClient) { }
 
 
-    getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(`${this.basePath}`);
-    }
-    create(user: User): Observable<User> {
-        return this.http.post<User>(`${this.basePath}/create`, (user));
+    signIn(email : string , password : string): Observable<User> {
+        return this.http.post<User>(`${this.basePath}`, {email,password});
     }
 
 }
