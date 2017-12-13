@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { NgxBarcodeModule } from 'ngx-barcode';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +37,7 @@ import { UserService } from './services/user.service';
     NgxBarcodeModule,
     FormsModule,
     HttpClientModule,
+    Ng2Webstorage,
     AppRoutingModule,
     SidebarModule.forRoot(),
   ],
