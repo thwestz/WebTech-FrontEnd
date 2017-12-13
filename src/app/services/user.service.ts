@@ -10,7 +10,7 @@ import { HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class UserService {
 
-    private basePath: string = `http://localhost:5000/users`;
+    private basePath: string = `http://localhost:5000/user`;
 
     constructor(
         private http: HttpClient) { }
