@@ -17,9 +17,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this._opened = this.slidebarService.isOpen;
-    console.log('1',this._opened)
     this.slidebarService.toggle.subscribe(isOpen => {
-      console.log('2',isOpen)
       const session: Session = this.locals.retrieve('token');
       if (session != null)
         this.fullname = `${session.fname} ${session.lname}`
