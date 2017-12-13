@@ -18,6 +18,7 @@ import { HomeEventListComponent } from './components/home/home-content/home-even
 import { HomeEventItemComponent } from './components/home/home-content/home-event-list/home-event-item/home-event-item.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserService } from './services/user.service';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserService } from './services/user.service';
     HomeEventListComponent,
     HomeEventItemComponent,
     HomeComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

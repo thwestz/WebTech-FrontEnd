@@ -7,26 +7,23 @@ import { HomeContentComponent } from './components/home/home-content/home-conten
 import { HomeEventListComponent } from './components/home/home-content/home-event-list/home-event-list.component';
 import { HomeEventItemComponent } from './components/home/home-content/home-event-list/home-event-item/home-event-item.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminComponent} from './components/admin/admin.component';
 
 const routes: Routes = [
     {
 
         path: '', component: HomeComponent, children: [
             { path: '', redirectTo: 'events', pathMatch: 'full' },
-            { path: 'events', component: HomeContentComponent, data: { title: 'หน้าหลัก' } , children :[
-                { path: '', component: HomeEventListComponent  },
-                { path: ':id', component: HomeEventItemComponent  },
-            ] },
+            {
+                path: 'events', component: HomeContentComponent, data: { title: 'หน้าหลัก' }, children: [
+                    { path: '', component: HomeEventListComponent },
+                    { path: ':id', component: HomeEventItemComponent },
+                ]
+            },
             { path: 'register', component: HomeRegisterComponent, data: { title: 'สมัครสมาชิก' } },
         ]
-    }
-    // {
-    //     path: '', component: HomeContentComponent, children: [
-    //         { path: 'news', component: HomeMatchListComponent, data: { title: 'หน้าหลัก' } },      
-    //         { path: 'register', component: HomeRegisterComponent, data: { title: 'สมัครสมาชิก' } },
-    //     ]
-
-    // }
+    },
+    {path: 'admin',component: HomeComponent,data:{title:'Admin'}},
 ];
 
 @NgModule({
