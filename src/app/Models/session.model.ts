@@ -1,7 +1,11 @@
 export class Session {
-    id : string;
+    status : number;
+    lname : string;
+    fname : string;
     uid : string;
-    skey : string;
+    _id : string;
+    updatedAt : number;
+    expiredAt : number;
     createdAt : number;
 
 }
