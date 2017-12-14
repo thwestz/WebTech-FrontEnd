@@ -2,6 +2,7 @@ import { Detail } from "./detail.model";
 
 export class Event {
 
+    _id : string;
     eName: string;
     userID: string;
     eDate: string;

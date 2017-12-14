@@ -1,20 +1,27 @@
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
+
 <div class="container">
-  <h2>Pending event</h2>
-  <p>รายการ event ที่ยังไม่ appprove</p>            
+  <h2>Event list</h2>
+  <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Approved</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pending</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">rejected</a>
+      </li>
+    </ul>
   <table class="table">
     <thead>
       <tr>
         <th>Eventname</th>
         <th>organizer</th>
         <th>Eventdate</th>
-        <th>Location</th>        
+        <th>Location</th>
         <th>Capacity</th>
         <th>Status</th>
         <th></th>
@@ -28,9 +35,11 @@
         <td>{{event.eLocat}}</td>
         <td>{{event.eCap}}</td>
         <td>{{event.status}}</td>
-        <td><button>appprove</button></td>
+        <td>
+            <button type="button" class="btn btn-secondary" (click)="approve(event)">Approve</button>
+        </td>
       </tr>
-      
+
     </tbody>
   </table>
 </div>

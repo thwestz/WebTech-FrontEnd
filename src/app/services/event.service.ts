@@ -18,4 +18,7 @@ export class EventService {
     getEvent(): Observable<Event[]> {
         return this.http.get<Event[]>(`${this.basePath}`);
     }
+    updateEvent(E: Event): Observable<Event> {
+        return this.http.put<Event>(`${this.basePath}/update`,(E));
+    }
 }
