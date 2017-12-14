@@ -10,13 +10,6 @@ import { User } from '../../../Models/user.model';
 export class UserManagementComponent implements OnInit {
   userList: User[]
   userSearch : User[];
-  array = [];
-  sum = 100;
-  throttle = 300;
-  scrollDistance = 1;
-  scrollUpDistance = 2;
-  direction = '';
-
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -25,7 +18,6 @@ export class UserManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(res => {
       this.userList = res;
       this.userSearch = res;
-      console.log(this.userList)
     })
   }
 

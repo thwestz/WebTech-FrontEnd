@@ -6,8 +6,6 @@ export enum STATUS {
 }
 
 export class User {
-    STATUS: STATUS;
-
     _id: string;
     email: string;
     password: string;
