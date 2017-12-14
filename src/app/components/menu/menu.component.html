@@ -6,13 +6,12 @@
      (onCloseStart)="_toggleClose()">
       <div class="list-group">
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">
-          <h3 class="text-center"></h3>
+          <h3 class="text-center">{{fullname}}</h3>
         </a>
-        <!-- <a class="list-group-item" routerLink="" routerLinkActive="active" (click)="_toggleClose()"></a> -->
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">Home</a>
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">Events</a>
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">Profile</a>
-        <a class="list-group-item" routerLink="" (click)="_toggleClose()">Log-out</a>
+        <a class="list-group-item" routerLink="" (click)="_toggleClose();logout()">Log-out</a>
       </div>
     </ng-sidebar>
     <ng-container ng-sidebar-content>

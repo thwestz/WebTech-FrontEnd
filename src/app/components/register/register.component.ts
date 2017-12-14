@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { User, STATUS, TYPES } from '../../../../Models/user.model';
-import { UserService } from '../../../../services/user.service';
+import { UserService } from '../../services/user.service';
+import { User, TYPES, STATUS } from '../../Models/user.model';
+import { AuthGuard } from '../../auth-guard.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
   selector: 'app-home-register',
-  templateUrl: './home-register.component.html',
-  styleUrls: ['./home-register.component.css'],
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   providers: [UserService]
 })
-export class HomeRegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   user: User;
   err : string[] = [];
   constructor(private userService: UserService) { }
