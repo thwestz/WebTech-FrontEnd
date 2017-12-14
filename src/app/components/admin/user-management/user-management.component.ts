@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../Models/user.model';
+import { LocalStorageService } from 'ngx-webstorage';
+import { Session } from '../../../Models/session.model';
 
 @Component({
   selector: 'app-user-management',
@@ -11,7 +13,8 @@ export class UserManagementComponent implements OnInit {
   userList: User[]
   userSearch: User[];
   editUser: User;
-  constructor(private userService: UserService) { }
+  session : Session;
+  constructor(private userService: UserService,private locals : LocalStorageService) { }
 
   ngOnInit() {
     this.editUser = new User();
@@ -21,14 +24,16 @@ export class UserManagementComponent implements OnInit {
       this.userList = res;
       this.userSearch = res;
     })
+    this.session = this.locals.retrieve('token');
+  
   }
 
   loadUser4Edit(user: User) {
     this.editUser = user;
   }
 
-  updateUser(user: User) {
-    this.userService.update(user).subscribe(res => {
+  updateUser() {
+    this.userService.update(this.editUser).subscribe(res => {
 
     })
   }

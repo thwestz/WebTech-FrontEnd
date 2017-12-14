@@ -51,7 +51,7 @@
               </div>
             </td>
             <td>
-              <a data-toggle="modal" data-target="#updateUser" (click)="loadUser4Edit(user)" *ngIf="user.status != 2">Edit</a>
+              <button class="btn btn-secondary" data-toggle="modal" data-target="#updateUser" (click)="loadUser4Edit(user)" *ngIf="session.status > user.status">Edit</button>
             </td>
 
           </tr>
@@ -65,21 +65,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title justify-content-md-center" id="updateUser">Sign-in</h5>
+        <h5 class="modal-title justify-content-md-center" id="updateUser">Update</h5>
         <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="row justify-content-md-center">
-          <!-- <div class="col-md-10 mb-3">
-            <select (ngModel)]="editUser.status">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
+        <div class="row justify-content-md-between">
+          <div class="col-md-7 mb-3">
+            User : {{editUser.fname}} {{editUser.lname}}
+
+          </div>
+          <div class="col-md-5 mb-3">
+
+            <select class="custom-select" [(ngModel)]="editUser.status">
+              <option [ngValue]="0">Member</option>
+              <option [ngValue]="1">Admin</option>
             </select>
-          </div> -->
+          </div>
         </div>
       </div>
       <div class="modal-footer">
