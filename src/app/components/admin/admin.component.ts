@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../../services/event.service';
-import { Event} from '../../Models/Event/event.model'
+import { Event, STATUS} from '../../Models/Event/event.model'
 import {Detail} from '../../Models/Event/detail.model'
 @Component({
   selector: 'app-admin',
@@ -9,7 +9,7 @@ import {Detail} from '../../Models/Event/detail.model'
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  private eventList:infEvent[];
+  private eventList:Event[];
   
 
   constructor(private eventService:EventService) { }
@@ -20,23 +20,11 @@ export class AdminComponent implements OnInit {
     })
  
   }
-  approve(E){
-    E.status=2
-    this.eventService.updateEvent(E).subscribe((response) => {
+  approve(event : Event){
+    event.status = STATUS.pending
+    this.eventService.update(event).subscribe((response) => {
     })
   }
  
 }
-
-interface infEvent{
-  _id:string
-  eName: string;
-  userID: string;
-  eDate: string;
-  eLocat: string;
-  eDetail: string;
-  eCap: number;
-  eSubDetail: Detail[];
-  status: number;
- }
 

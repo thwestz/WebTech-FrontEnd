@@ -1,4 +1,4 @@
 export class Detail {
-    topic : string;
-    content : string;
+    key : string;
+    value : string;
 }
