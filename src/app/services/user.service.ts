@@ -13,28 +13,32 @@ import { Session } from "../Models/session.model";
 export class UserService {
 
     private basePath: string = `http://localhost:5000/user`;
-    private session : Session;
+    private session: Session;
     constructor(
         private http: HttpClient
         , private local: LocalStorageService) { }
 
 
     getUsers(): Observable<User[]> {
-        
+
         return this.http.get<User[]>(`${this.basePath}`);
     }
 
-    getUserByID(id : string): Observable<User> {
-        
+    getUserByID(id: string): Observable<User> {
+
         return this.http.get<User>(`${this.basePath}/${id}`);
     }
 
     create(user: User): Observable<User> {
-        
+
         return this.http.post<User>(`${this.basePath}/create`, (user));
     }
 
-    getSession(){
+    update(user: User): Observable<User> {
+        return this.http.put<User>(`${this.basePath}`, (user));
+    }
+    
+    getSession() {
         this.session = this.local.retrieve('token');
     }
 

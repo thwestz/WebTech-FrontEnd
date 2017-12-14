@@ -9,15 +9,27 @@ import { User } from '../../../Models/user.model';
 })
 export class UserManagementComponent implements OnInit {
   userList: User[]
-  userSearch : User[];
+  userSearch: User[];
+  editUser: User;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.editUser = new User();
     this.userList = [];
     this.userSearch = [];
     this.userService.getUsers().subscribe(res => {
       this.userList = res;
       this.userSearch = res;
+    })
+  }
+
+  loadUser4Edit(user: User) {
+    this.editUser = user;
+  }
+
+  updateUser(user: User) {
+    this.userService.update(user).subscribe(res => {
+
     })
   }
 
@@ -30,10 +42,10 @@ export class UserManagementComponent implements OnInit {
 
     value = value.trim().toLowerCase().replace(/([.*+?^${}()|\[\]\/\\])/g, "\\$1");
     this.userList = this.userSearch.filter(user => {
-      return user.fname.toLocaleLowerCase().concat(` `).concat(user.lname.toLocaleLowerCase()).search(value) >= 0 
-      || user.email.toLocaleLowerCase().search(value) >= 0 
+      return user.fname.toLocaleLowerCase().concat(` `).concat(user.lname.toLocaleLowerCase()).search(value) >= 0
+        || user.email.toLocaleLowerCase().search(value) >= 0
       // User.STATUS
-      
+
     });
 
   }
