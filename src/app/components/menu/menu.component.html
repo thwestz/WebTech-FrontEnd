@@ -9,11 +9,7 @@
           <h3 class="text-center">{{fullname}}</h3>
         </a>
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">Home</a>
-<<<<<<< HEAD
-        <a class="list-group-item" routerLink="/admin" (click)="_toggleClose()">Admin</a>
-=======
         <a *ngIf = "isAdmin == true" class="list-group-item" routerLink="/admin" (click)="_toggleClose()">Admin Management</a>
->>>>>>> 8130c59163fd3abd41ae82842c0ff98a25ba7264
         <a class="list-group-item" routerLink="/event" (click)="_toggleClose()">Events</a>
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">Profile</a>
         <a class="list-group-item" routerLink="" (click)="_toggleClose();logout()">Log-out</a>

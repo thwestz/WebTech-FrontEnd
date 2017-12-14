@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Event, STATUS} from '../../Models/Event/event.model'
 import {Detail} from '../../Models/Event/detail.model'
-import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,27 +11,20 @@ import { UserService } from '../../services/user.service';
 export class AdminComponent implements OnInit {
   private eventList:Event[];
   
-  constructor(private eventService:EventService,private userService : UserService) { }
+
+  constructor(private eventService:EventService) { }
 
   ngOnInit() {
     this.eventService.getEvent().subscribe((response) => {
       this.eventList = response;
-        this.eventList.forEach(item => {
-          this.userService.getUserByID(item.userID).subscribe(user => {
-            item.tempUser = user
-          })
-        })
+      this.eventList.forEach(res => {
+        
       })
+    })
  
   }
   approve(event : Event){
-    event.status = STATUS.approved
-    this.eventService.update(event).subscribe((response) => {
-    })
-  }
-
-  reject(event : Event){
-    event.status = STATUS.reject
+    event.status = STATUS.pending
     this.eventService.update(event).subscribe((response) => {
     })
   }

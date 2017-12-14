@@ -20,15 +20,16 @@ export class EventService {
     getEvent(): Observable<Event[]> {
         return this.http.get<Event[]>(`${this.basePath}`);
     }
-
+    //
     getEventByStatus(status: number): Observable<Event[]> {
         return this.http.get<Event[]>(`${this.basePath}/status/${status}`);
     }
-    getEventByID(id: string): Observable<Event> {
+
+    getEventByID(id:string): Observable<Event> {
         return this.http.get<Event>(`${this.basePath}/${id}`);
     }
 
-    getEventByUserID(): Observable<Event[]> {
+    getEventByUserID() : Observable<Event[]>{
         this.getSession();
         return this.http.get<Event[]>(`${this.basePath}/owner/${this.session.uid}`);
     }

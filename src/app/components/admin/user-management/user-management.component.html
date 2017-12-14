@@ -51,7 +51,7 @@
               </div>
             </td>
             <td>
-              <a routerLink="./edit/{{list._id}}" *ngIf="list.status == 0">Edit</a>
+              <a data-toggle="modal" data-target="#updateUser" (click)="loadUser4Edit(user)" *ngIf="user.status != 2">Edit</a>
             </td>
 
           </tr>
@@ -60,3 +60,31 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="updateUser" tabindex="-1" role="dialog" aria-labelledby="updateUser" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title justify-content-md-center" id="updateUser">Sign-in</h5>
+        <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-md-center">
+          <div class="col-md-10 mb-3">
+            <select (ngModel)]="editUser.status">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateUser()">Update</button>
+      </div>
+    </div>
+  </div>
