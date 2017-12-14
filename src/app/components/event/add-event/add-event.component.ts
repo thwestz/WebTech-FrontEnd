@@ -6,7 +6,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Session } from '../../../Models/session.model';
 import { UserService } from '../../../services/user.service';
 import { FileUploader } from 'ng2-file-upload';
-import { EventService } from '../../../services/event.Service';
+import { EventService } from '../../../services/event.service';
 
 @Component({
   selector: 'app-add-event',

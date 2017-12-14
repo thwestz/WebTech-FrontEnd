@@ -29,11 +29,11 @@
     <tbody>
       <tr *ngFor="let event of eventList">
         <td>{{event.eName}}</td>
-        <td>{{event.userID}}</td>
+        <td>{{user.userID}}</td>
         <td>{{event.eDate}}</td>
         <td>{{event.eLocat}}</td>
         <td>{{event.eCap}}</td>
-        <td>{{event.status}}</td>
+        <td id="status">{{event.status}}</td>
         <td>
           <button type="button" class="btn btn-secondary" (click)="approve(event)">Approve</button>
         </td>
@@ -42,22 +42,3 @@
     </tbody>
   </table>
 </div>
-
-<script>
-  function myFunction() {
-    var hour = new Date().getHours();
-    var greeting;
-    if (hour < 18) {
-      greeting = "Good day";
-    } else {
-      greeting = "Good evening";
-    }
-    document.getElementById("demo").innerHTML = greeting;
-  }
-</script>
-<span class="badge badge-default">Default</span>
-<span class="badge badge-primary">Primary</span>
-<span class="badge badge-success">Success</span>
-<span class="badge badge-info">Info</span>
-<span class="badge badge-warning">Warning</span>
-<span class="badge badge-danger">Danger</span>

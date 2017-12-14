@@ -21,6 +21,10 @@ export class EventService {
         return this.http.get<Event[]>(`${this.basePath}`);
     }
 
+    getEventByStatus(status : number): Observable<Event[]>{
+        return this.http.get<Event[]>(`${this.basePath}/status/${status}`);
+    }
+
     update(event: Event): Observable<Event> {
 
         return this.http.put<Event>(`${this.basePath}/update`, (event) );
