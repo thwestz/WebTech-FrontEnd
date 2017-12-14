@@ -14,13 +14,20 @@ export class MenuComponent implements OnInit {
   constructor(private slidebarService: SlidebarService, private locals: LocalStorageService) { }
   _opened: boolean;
   fullname: string;
+  isAdmin: boolean = false;
 
   ngOnInit() {
     this._opened = this.slidebarService.isOpen;
     this.slidebarService.toggle.subscribe(isOpen => {
       const session: Session = this.locals.retrieve('token');
-      if (session != null)
+      if (session != null) {
         this.fullname = `${session.fname} ${session.lname}`
+        if (session.status == 0) {
+          this.isAdmin = false;
+        } else {
+          this.isAdmin = true;
+        }
+      }
       this._opened = isOpen;
     })
   }

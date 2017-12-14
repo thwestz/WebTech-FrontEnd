@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Event, STATUS } from '../../../Models/Event/event.model';
 import { Detail } from '../../../Models/Event/detail.model';
 import { Time } from '../../../Models/Event/time.model';
@@ -18,6 +18,7 @@ export class AddEventComponent implements OnInit {
   event: Event;
   sDate: Date[];
   eDate: Date[];
+  closeDate : Date;
   constructor(private locals: LocalStorageService, private eventService: EventService) { }
 
 
@@ -25,12 +26,14 @@ export class AddEventComponent implements OnInit {
   ngOnInit() {
 
     this.event = new Event();
+    this.closeDate = new Date();
     this.event.eSubDetail = [];
     this.event.eSubDetail.push(new Detail());
     this.sDate = [];
     this.sDate.push(new Date());
     this.eDate = [];
     this.eDate.push(new Date());
+    this.event.userRegistedID = [];
 
   }
 
@@ -64,8 +67,9 @@ export class AddEventComponent implements OnInit {
       this.event.eDate[i].endTime = `${this.eDate[i].getHours()}:${this.eDate[i].getMinutes()}`;
     }
     this.event.status = STATUS.pending;
-
+    this.event.expiredAt = this.closeDate.getTime();
     this.eventService.create(this.event).subscribe(res => {
+      this.closeDate = new Date();
       this.event = new Event();
       this.event.eDate = [];
       this.event.eSubDetail = [];
@@ -74,6 +78,7 @@ export class AddEventComponent implements OnInit {
       this.sDate.push(new Date());
       this.eDate = [];
       this.eDate.push(new Date());
+      this.event.userRegistedID = [];
     })
 
 

@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
 import { LocalStorageService } from "ngx-webstorage";
+import { Session } from "../Models/session.model";
 
 
 
@@ -21,8 +22,8 @@ export class AuthService {
         return this.http.post<User>(`${this.basePath}`, {email,password});
     }
 
-    checkToken(){
-        
+    getSession(id : string) : Observable<Session>{
+        return this.http.get<Session>(`${this.basePath}/${id}`);
     }
 
 }

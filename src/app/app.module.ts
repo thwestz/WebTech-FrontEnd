@@ -24,14 +24,14 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { EventService } from './services/event.service';
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventListComponent } from './components/event/event-list/event-list.component';
-import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';
 import { AddEventComponent } from './components/event/add-event/add-event.component';
 import { EventComponent } from './components/event/event.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserManagementComponent } from './components/admin/user-management/user-management.component';
+import { EventManagementComponent } from './components/admin/event-management/event-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +43,9 @@ import { AdminComponent } from './components/admin/admin.component';
     AddEventComponent,
     EditEventComponent,
     EventListComponent,
-    DetailEventComponent,
     AdminComponent,
+    UserManagementComponent,
+    EventManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +60,7 @@ import { AdminComponent } from './components/admin/admin.component';
     SidebarModule.forRoot(),
 
   ],
-  providers: [SlidebarService, AuthGuard, AuthService, EventService],
+  providers: [SlidebarService, AuthGuard, AuthService, EventService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

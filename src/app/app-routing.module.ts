@@ -11,6 +11,9 @@ import { EventComponent } from './components/event/event.component';
 import { AddEventComponent } from './components/event/add-event/add-event.component';
 
 import { AdminComponent } from './components/admin/admin.component';
+import { EditEventComponent } from './components/event/edit-event/edit-event.component';
+import { UserManagementComponent } from './components/admin/user-management/user-management.component';
+import { EventManagementComponent } from './components/admin/event-management/event-management.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,14 +23,17 @@ const routes: Routes = [
         path: 'event', component: EventComponent, children: [
             { path: '', component: EventListComponent, data: { title: 'Event' } },
             { path: 'create', component: AddEventComponent, data: { title: 'Create Event' } },
-            // { path: ':prodId', component: ProductDetailComponent, data: { title: 'รายละเอียดสินค้า' } },
+            { path: 'edit/:_id', component: EditEventComponent, data: { title: 'Edit Event' } },
             // { path: ':prodId/edit', component: EditProductComponent, data: { title: 'แก้ไขสินค้า' } },
             // { path: ':prodId/:serial', component: TrackLogComponent, data: { title: 'ประวัติสินค้า' } }
-        ]
-    },
-    { path: 'register', component: RegisterComponent, data: { title: 'Register' }},
-    // { path: '**', component: PageNotFoundComponent, data: { title: 'Page not found' } },
-    { path: 'admin', component: AdminComponent, data:{title:'Admin'}},
+        ], canActivate: [AuthGuard]
+    }, {
+        path: 'admin', component: AdminComponent, children: [
+            { path: '', component: UserManagementComponent, data: { title: 'Admin Management' } },
+            { path: 'event', component: EventManagementComponent, data: { title: 'Admin Management' } },
+
+        ], canActivate: [AuthGuard]
+    }
 ];
 
 

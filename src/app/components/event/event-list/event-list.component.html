@@ -17,6 +17,36 @@
       <div class="card-body">
         <h4 class="card-title">Event List</h4>
       </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Event Name</th>
+            <th scope="col">Capacity</th>
+            <th scope="col">Close Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of eventList;index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{list.tempUser?.fname}} {{list.tempUser?.lname}}</td>
+            <td>{{list.userRegistedID.length}}</td>
+            <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
+            <td>
+              <div [ngSwitch]="list.status">
+                <span *ngSwitchCase="0">Pending</span>
+                <span *ngSwitchCase="1">Approved</span>
+                <span *ngSwitchCase="2">Reject</span>
+              </div>
+            </td>
+            <td>
+              <a routerLink="./edit/{{list._id}}" *ngIf = "list.status == 0">Edit</a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
