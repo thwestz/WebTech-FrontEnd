@@ -24,7 +24,6 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { EventService } from './services/event.service';
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventListComponent } from './components/event/event-list/event-list.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';

@@ -9,14 +9,14 @@
     </div>
   </div>
   <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <a routerLink="./event">
-            <h4 class="card-title">Event Management</h4>
-          </a>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <a routerLink="./event">
+          <h4 class="card-title">Event Management</h4>
+        </a>
       </div>
     </div>
+  </div>
 </div>
 <br>
 <div class="row">
@@ -25,34 +25,36 @@
       <div class="card-body">
         <h4 class="card-title">Event List</h4>
       </div>
+      <div class="col-6">
+        <input type="text" class="form-control" placeholder="Search...." (keyup)="search($event.target.value)">
+      </div>
+      <br>
       <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Event Name</th>
-            <th scope="col">Capacity</th>
-            <th scope="col">Close Date</th>
+            <th scope="col">Email</th>
+            <th scope="col">User Name</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let list of eventList;index as i">
-              <th scope="row">{{i+1}}</th>
-              <td>{{list.tempUser?.fname}} {{list.tempUser?.lname}}</td>
-              <td>{{list.userRegistedID.length}}</td>
-              <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
-              <td>
-                <div [ngSwitch]="list.status">
-                  <span *ngSwitchCase="0">Pending</span>
-                  <span *ngSwitchCase="1">Approved</span>
-                  <span *ngSwitchCase="2">Reject</span>
-                </div>
-              </td>
-              <td>
+          <tr *ngFor="let user of userList;index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{user.email}}</td>
+            <td>{{user.fname}} {{user.lname}}</td>
+            <td>
+              <div [ngSwitch]="user.status">
+                <span *ngSwitchCase="0">Member</span>
+                <span *ngSwitchCase="1">Admin</span>
+                <span *ngSwitchCase="2">Super Admin</span>
+              </div>
+            </td>
+            <!-- <td>
                 <a routerLink="./edit/{{list._id}}" *ngIf = "list.status == 0">Edit</a>
-              </td>
-  
-            </tr> -->
+              </td> -->
+
+          </tr>
         </tbody>
       </table>
     </div>

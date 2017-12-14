@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User, TYPES, STATUS } from '../../Models/user.model';
+import { User, STATUS } from '../../Models/user.model';
 import { AuthGuard } from '../../auth-guard.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -32,8 +32,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.user.status = STATUS.normal;
-    this.user.types = TYPES.member;
+    this.user.status = STATUS.member;
 
     this.userService.create(this.user).subscribe( user => {
 

@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
       this.localSt.store('token', res);
       document.getElementById("closeModal").click();
       this.router.navigate(['/home']);
-
+      this.user = new User();
     })
   }
 
