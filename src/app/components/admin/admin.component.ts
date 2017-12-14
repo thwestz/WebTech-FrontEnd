@@ -25,7 +25,6 @@ export class AdminComponent implements OnInit {
     this.eventService.updateEvent(E).subscribe((response) => {
     })
   }
-  
  
 }
 
