@@ -15,7 +15,6 @@ import { EventService } from '../../../services/event.Service';
   providers: [EventService]
 })
 export class AddEventComponent implements OnInit {
-  files: File;
   event: Event;
   sDate: Date[];
   eDate: Date[];
@@ -52,7 +51,7 @@ export class AddEventComponent implements OnInit {
   delSubDate(i) {
     this.event.eSubDetail.splice(i, 1);
   }
-  @ViewChild('fileInput') fileInput;
+
   createEvent() {
     this.event.eDate = [];
     for (let i = 0; i < this.sDate.length; i++) {
