@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
@@ -25,32 +26,24 @@
       <div class="card-body">
         <h4 class="card-title">Event List</h4>
       </div>
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="admin">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="approved">Approved</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pending">Pending</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="rejected">rejected</a>
-        </li>
-      </ul>
+      <div class="col-6">
+        <input type="text" class="form-control" placeholder="Search...." (keyup)="search($event.target.value)">
+      </div>
+      <br>
       <table class="table">
         <thead>
           <tr>
+            <th>#</th>
             <th style="width:20%">Event Name</th>
             <th>Organizer</th>
-            <th style="width:35%">Location</th>
+            <th style="width:30%">Location</th>
             <th>Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let event of eventList">
+          <tr *ngFor="let event of eventSearch;index as i">
+            <td>{{i+1}}</td>
             <td>{{event.eName}}</td>
             <td>{{event.tempUser?.fname}} {{event.tempUser?.lname}}</td>
             <td>{{event.eLocat}}</td>
@@ -64,6 +57,8 @@
             <td *ngIf="event.status == 0">
               <button type="button" class="btn btn-success" (click)="approve(event)">Approve</button>
               <button type="button" class="btn btn-danger" (click)="reject(event)">Reject</button>
+            </td>
+            <td *ngIf="event.status != 0">
             </td>
           </tr>
 

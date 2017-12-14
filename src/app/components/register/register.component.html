@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-auto">
@@ -10,8 +11,18 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-6 mb-3">
-      <div class="alert alert-danger" role="alert" *ngIf="err.length > 0">
-        <strong>Error</strong> {{err}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="err.length > 0">
+        <strong> Error : </strong> {{err}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+        <strong> Registed : </strong>
+        <a data-toggle="modal" data-target="#Login" class="alert-link">Click to Sign-in</a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     </div>
   </div>

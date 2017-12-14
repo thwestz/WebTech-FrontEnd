@@ -16,6 +16,9 @@ import { Session } from '../../Models/session.model';
 export class NavbarComponent implements OnInit {
   user: User;
   session: Session;
+  loading: boolean;
+  success: boolean;
+  err: string[];
   constructor(private slidebarService: SlidebarService,
     private authService: AuthService,
     private localSt: LocalStorageService,
@@ -24,16 +27,36 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+    this.err = [];
     this.user = new User();
   }
 
   signIn() {
+    this.loading = true;
+    this.err = [];
+    if (!this.user.email) {
+      this.err.push(`Please fill out this email address. !`)
+      this.loading = false;
+      return;
+    }
+
+    if (!this.user.password) {
+      this.err.push(`Please fill out this password. !`)
+      this.loading = false;
+      return;
+    }
 
     this.authService.signIn(this.user.email, this.user.password).subscribe(res => {
       this.localSt.store('token', res);
       document.getElementById("closeModal").click();
       this.router.navigate(['/home']);
       this.user = new User();
+      this.success = true;
+      this.loading = false;
+    }, err => {
+      this.err.push(`Email or Password invalid. !`)
+      this.loading = false;
+      return;
     })
   }
 

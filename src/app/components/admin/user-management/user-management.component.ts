@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
-import { User } from '../../../Models/user.model';
+import { User, STATUS } from '../../../Models/user.model';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Session } from '../../../Models/session.model';
 
@@ -14,15 +14,18 @@ export class UserManagementComponent implements OnInit {
   userSearch: User[];
   editUser: User;
   session : Session;
+  loading : boolean;
   constructor(private userService: UserService,private locals : LocalStorageService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.editUser = new User();
     this.userList = [];
     this.userSearch = [];
     this.userService.getUsers().subscribe(res => {
       this.userList = res;
       this.userSearch = res;
+      this.loading = false;
     })
     this.session = this.locals.retrieve('token');
   
@@ -33,8 +36,9 @@ export class UserManagementComponent implements OnInit {
   }
 
   updateUser() {
+    this.loading = true;
     this.userService.update(this.editUser).subscribe(res => {
-
+      this.loading = false;
     })
   }
 
@@ -49,7 +53,7 @@ export class UserManagementComponent implements OnInit {
     this.userList = this.userSearch.filter(user => {
       return user.fname.toLocaleLowerCase().concat(` `).concat(user.lname.toLocaleLowerCase()).search(value) >= 0
         || user.email.toLocaleLowerCase().search(value) >= 0
-      // User.STATUS
+      || STATUS[user.status].search(value) >= 0
 
     });
 

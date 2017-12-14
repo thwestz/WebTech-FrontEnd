@@ -18,13 +18,16 @@ export class AddEventComponent implements OnInit {
   event: Event;
   sDate: Date[];
   eDate: Date[];
-  closeDate : Date;
+  closeDate: Date;
+  loading: boolean;
+  success : boolean;
+  err: string[];
   constructor(private locals: LocalStorageService, private eventService: EventService) { }
 
 
 
   ngOnInit() {
-
+    this.err = [];
     this.event = new Event();
     this.closeDate = new Date();
     this.event.eSubDetail = [];
@@ -56,6 +59,39 @@ export class AddEventComponent implements OnInit {
   }
 
   createEvent() {
+    this.loading = true;
+    this.err = [];
+    if (!this.event.eName) {
+      this.err.push(`Please fill out this Event Name. !`)
+      this.loading = false;
+      return;
+    }
+
+    if (!this.event.eLocat) {
+      this.err.push(`Please fill out this Location. !`)
+      this.loading = false;
+      return;
+    }
+    if ( (typeof this.event.eCap === 'undefined')) {
+      this.err.push(`Please check Capacity. !`)
+      this.loading = false;
+      return;
+    }
+
+
+    if (!this.event.eName) {
+      this.err.push(`Please fill out this Event Name. !`)
+      this.loading = false;
+      return;
+    }
+
+    if (!this.event.eLOGO) {
+      this.event.eLOGO = `https://i.imgur.com/rHfm8uj.png`;
+      this.loading = false;
+      return;
+    }
+
+
     this.event.eDate = [];
     for (let i = 0; i < this.sDate.length; i++) {
 
@@ -79,6 +115,11 @@ export class AddEventComponent implements OnInit {
       this.eDate = [];
       this.eDate.push(new Date());
       this.event.userRegistedID = [];
+      this.loading = false;
+    },err => {
+      this.err.push(`Internal Server Error`)
+      this.loading = false;
+      return ;
     })
 
 

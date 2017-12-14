@@ -11,14 +11,18 @@ import { Time } from '../../../Models/Event/time.model';
   styleUrls: ['./edit-event.component.css']
 })
 export class EditEventComponent implements OnInit {
-
+  success : boolean;
   event: Event;
-  closeDate : Date;
+  closeDate: Date;
   sDate: Date[];
   eDate: Date[];
+  loading: boolean;
+  err: string[];
   constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
   ngOnInit() {
+    this.err = [];
+    this.loading = true;
     this.sDate = [];
     this.eDate = [];
     this.event = new Event();
@@ -30,6 +34,7 @@ export class EditEventComponent implements OnInit {
           this.sDate.push(new Date(date.startDate));
           this.eDate.push(new Date(date.endDate));
         })
+        this.loading = false;
       })
     });
   }
@@ -53,7 +58,40 @@ export class EditEventComponent implements OnInit {
   }
 
   updateEvent() {
+    this.err = [];
+    this.loading = true;
     this.event.eDate = [];
+
+    if (!this.event.eName) {
+      this.err.push(`Please fill out this Event Name. !`)
+      this.loading = false;
+      return;
+    }
+
+    if (!this.event.eLocat) {
+      this.err.push(`Please fill out this Location. !`)
+      this.loading = false;
+      return;
+    }
+    if ((typeof this.event.eCap === 'undefined')) {
+      this.err.push(`Please check Capacity. !`)
+      this.loading = false;
+      return;
+    }
+
+
+    if (!this.event.eName) {
+      this.err.push(`Please fill out this Event Name. !`)
+      this.loading = false;
+      return;
+    }
+
+    if (!this.event.eLOGO) {
+      this.event.eLOGO = `https://i.imgur.com/rHfm8uj.png`;
+      this.loading = false;
+      return;
+    }
+
     for (let i = 0; i < this.sDate.length; i++) {
 
       this.event.eDate.push(new Time());
@@ -65,7 +103,12 @@ export class EditEventComponent implements OnInit {
     }
     this.event.expiredAt = this.closeDate.getTime();
     this.eventService.update(this.event).subscribe(res => {
-      alert('done')
-    })
+      this.loading = false;
+      this.success = true;
+    }), err => {
+      this.err.push(`Internal Server Error`)
+      this.loading = false;
+      return ;
+    }
   }
 }

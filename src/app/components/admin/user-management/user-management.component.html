@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
@@ -23,7 +24,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Event List</h4>
+        <h4 class="card-title">User List</h4>
       </div>
       <div class="col-6">
         <input type="text" class="form-control" placeholder="Search...." (keyup)="search($event.target.value)">
@@ -87,7 +88,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="updateUser()">Update</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">Update</button>
       </div>
     </div>
   </div>

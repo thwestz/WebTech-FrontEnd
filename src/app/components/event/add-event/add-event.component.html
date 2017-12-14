@@ -1,5 +1,21 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div class="card">
   <div class="card-body">
+    <div class="col-md-12 mb-3">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="err.length > 0">
+        <strong> Error : </strong> {{err}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+        <strong> Created : </strong>
+        <a data-toggle="modal" data-target="#Login" class="alert-link">Click to view</a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
     <div class="form-group row">
       <label for="inputEvent" class="col-sm-auto col-form-label">
         <h5>Event Name :</h5>
@@ -17,20 +33,20 @@
           <div class="col-5">
             <div class="form-group col-12">
               <label for="inputStart">Start Date : </label>
-              <owl-date-time [(ngModel)]="sDate[i]" dataType="date"></owl-date-time>
+              <owl-date-time [(ngModel)]="sDate[i]" [hideClearButton] = "true" dataType="date"></owl-date-time>
             </div>
           </div>
           <div class="col-5">
             <div class="form-group col-12">
               <label for="inputEnd">End Date : </label>
-              <owl-date-time [(ngModel)]="eDate[i]" dataType="date"></owl-date-time>
+              <owl-date-time [(ngModel)]="eDate[i]" [hideClearButton] = "true"  dataType="date"></owl-date-time>
             </div>
           </div>
           <div class="col-2">
             <div class="form-group col-12">
               <label for="inputEnd"> </label>
               <button type="submit-[i]" class="btn btn-primary" (click)="addDate()">+</button>
-              <button *ngIf="sDate.length > 1" type="submit-[i]" class="btn btn-primary" (click)="delDate(i)">-</button>
+              <button *ngIf="sDate.length > 1" type="submit-[i]" class="btn btn-danger" (click)="delDate(i)">-</button>
             </div>
           </div>
         </div>
@@ -40,7 +56,7 @@
     <div class="form-group row">
       <div class="col-sm-10">
         <label for="inputExpried">Close Date : </label>
-        <owl-date-time [(ngModel)]="closeDate" dataType="date"></owl-date-time>
+        <owl-date-time [(ngModel)]="closeDate" [hideClearButton] = "true" dataType="date"></owl-date-time>
       </div>
     </div>
     <br>
@@ -59,7 +75,7 @@
 
       <div class="form-group col-md-2">
         <label for="inputCap">Capacity : </label>
-        <input type="number" class="form-control" id="inputCap" [(ngModel)]="event.eCap">
+        <input type="number" min = "0" class="form-control" id="inputCap" [(ngModel)]="event.eCap">
       </div>
     </div>
     <div class="form-row">
@@ -89,7 +105,7 @@
             <div class="form-group col-12">
               <label for="inputEnd"> </label>
               <button type="submit-[i]" class="btn btn-primary" (click)="addSubDate()">+</button>
-              <button *ngIf="event.eSubDetail.length > 1" type="submit-[i]" class="btn btn-primary" (click)="delSubDate(i)">-</button>
+              <button *ngIf="event.eSubDetail.length > 1" type="submit-[i]" class="btn btn-danger" (click)="delSubDate(i)">-</button>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@
 </nav>
 
 <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+  <ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,6 +18,21 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="col-md-auto mb-3">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="err.length > 0">
+            <strong> Error : </strong> {{err}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+            <strong> Registed : </strong>
+            <a data-toggle="modal" data-target="#Login" class="alert-link">Click to Sign-in</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
         <div class="row justify-content-md-center">
           <div class="col-md-10 mb-3">
             <label for="email">Email Address</label>

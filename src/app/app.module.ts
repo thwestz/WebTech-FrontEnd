@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { Ng2Webstorage } from 'ngx-webstorage';
-import { FileUploadModule } from 'ng2-file-upload';
+import { LoadingModule } from 'ngx-loading';
 
 import { DateTimePickerModule } from 'ng-pick-datetime';
 
@@ -32,6 +32,8 @@ import { EventComponent } from './components/event/event.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { EventManagementComponent } from './components/admin/event-management/event-management.component';
+import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
+import { EventDetailManagementComponent } from './components/admin/event-management/event-detail-management/event-detail-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,8 @@ import { EventManagementComponent } from './components/admin/event-management/ev
     AdminComponent,
     UserManagementComponent,
     EventManagementComponent,
+    DetailEventComponent,
+    EventDetailManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ import { EventManagementComponent } from './components/admin/event-management/ev
     AppRoutingModule,
     DateTimePickerModule ,
     BrowserAnimationsModule,
-    FileUploadModule,
+    LoadingModule,
     SidebarModule.forRoot(),
 
   ],

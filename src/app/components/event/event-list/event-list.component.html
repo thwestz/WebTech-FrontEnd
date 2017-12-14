@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div class="row">
   <div class="col-sm-12">
     <div class="card">
@@ -17,6 +18,10 @@
       <div class="card-body">
         <h4 class="card-title">Event List</h4>
       </div>
+      <div class="col-6">
+        <input type="text" class="form-control" placeholder="Search...." (keyup)="search($event.target.value)">
+      </div>
+      <br>
       <table class="table">
         <thead>
           <tr>
@@ -28,9 +33,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let list of eventList;index as i">
+          <tr *ngFor="let list of eventSearch;index as i">
             <th scope="row">{{i+1}}</th>
-            <td>{{list.tempUser?.fname}} {{list.tempUser?.lname}}</td>
+            <td>{{list.eName}}</td>
             <td>{{list.userRegistedID.length}}</td>
             <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
             <td>
@@ -41,7 +46,7 @@
               </div>
             </td>
             <td>
-              <a routerLink="./edit/{{list._id}}" *ngIf = "list.status == 0">Edit</a>
+              <button class = "btn btn-secondary" routerLink="./edit/{{list._id}}" *ngIf="list.status == 0">Edit</button>
             </td>
 
           </tr>
