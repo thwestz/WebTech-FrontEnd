@@ -19,7 +19,9 @@ import { AuthGuard } from './auth-guard.service';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
-import { AdminComponent} from './components/admin/admin.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { EventService } from './services/event.service';
+
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { AdminComponent} from './components/admin/admin.component';
     AppRoutingModule,
     SidebarModule.forRoot(),
   ],
-  providers: [SlidebarService, AuthGuard,AuthService],
+  providers: [SlidebarService, AuthGuard, AuthService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

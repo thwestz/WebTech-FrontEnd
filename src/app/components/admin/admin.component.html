@@ -5,7 +5,6 @@
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
-
 <div class="container">
   <h2>Pending event</h2>
   <p>รายการ event ที่ยังไม่ appprove</p>            
@@ -13,29 +12,25 @@
     <thead>
       <tr>
         <th>Eventname</th>
-        <th>organize</th>
+        <th>organizer</th>
         <th>Eventdate</th>
         <th>Location</th>        
         <th>Capacity</th>
         <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <tr *ngFor="let event of eventList">
+        <td>{{event.eName}}</td>
+        <td>{{event.userID}}</td>
+        <td>{{event.eDate}}</td>
+        <td>{{event.eLocat}}</td>
+        <td>{{event.eCap}}</td>
+        <td>{{event.status}}</td>
+        <td><button>appprove</button></td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      
     </tbody>
   </table>
 </div>

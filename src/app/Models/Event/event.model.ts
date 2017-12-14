@@ -1,27 +1,19 @@
 import { Detail } from "./detail.model";
 
-export enum STATUS {
-    open,
-    close
-}
-
 export class Event {
-    STATUS : STATUS;
 
-    id : string;
-    uidRegis : string[]
-    ;
-    name : string;
-    location : string;
+    eName: string;
+    userID: string;
+    eDate: string;
+    eLocat: string;
+    eDetail: string;
+    eSubDetail: Detail[];
+    eCap: number;
+    status: number;  // 0 Pending 1 Approve 2 Reject
 
-    detail : Detail[];
 
-    limit : number;
-    startDate : number;
-    regisDate : number;
-    closeDate : number;
+    createdAt: number;
+    expiredAt: number;
+    updatedAt: number;
 
-    createdBy : string;
-    createdAt : number;
-    updatedAt : number;
 }
