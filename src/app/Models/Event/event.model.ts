@@ -1,27 +1,27 @@
 import { Detail } from "./detail.model";
+import { Time } from "./time.model";
 
 export enum STATUS {
-    open,
-    close
+    pending,
+    approved,
+    reject
 }
+
 
 export class Event {
     STATUS : STATUS;
 
-    id : string;
-    uidRegis : string[]
-    ;
-    name : string;
-    location : string;
+    userID: string;
+    eName : string;
+    eLOGO : string;
+    eDate : Time[];
+    eLocat : string;
+    eCap : number;
+    eMainDetail : string;
+    status : STATUS;
+    eSubDetail : Detail[];
 
-    detail : Detail[];
-
-    limit : number;
-    startDate : number;
-    regisDate : number;
-    closeDate : number;
-
-    createdBy : string;
-    createdAt : number;
-    updatedAt : number;
+    createdAt: number;
+    expiredAt: number;
+    updatedAt: number;
 }

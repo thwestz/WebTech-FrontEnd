@@ -5,32 +5,28 @@ import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
 import { LocalStorageService } from "ngx-webstorage";
+import { Event } from "../Models/Event/event.model";
 import { Session } from "../Models/session.model";
 
 
 
 @Injectable()
-export class UserService {
+export class EventService {
 
-    private basePath: string = `http://localhost:5000/user`;
-    private session : Session;
+    private basePath: string = `http://localhost:5000/event`;
+    private session : Session
     constructor(
         private http: HttpClient
         , private local: LocalStorageService) { }
 
 
-    getUsers(): Observable<User[]> {
-        
-        return this.http.get<User[]>(`${this.basePath}`);
-    }
-    create(user: User): Observable<User> {
-        
-        return this.http.post<User>(`${this.basePath}/create`, (user));
+    create(event: Event): Observable<Event> {
+        this.getSession();
+        event.userID = this.session.uid;
+        return this.http.post<Event>(`${this.basePath}/create`, (event))
     }
 
-    getSession(){
+    getSession() {
         this.session = this.local.retrieve('token');
     }
-
-
 }

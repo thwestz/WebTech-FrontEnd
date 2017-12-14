@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { Ng2Webstorage } from 'ngx-webstorage';
+import { FileUploadModule } from 'ng2-file-upload';
+
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +22,13 @@ import { AuthGuard } from './auth-guard.service';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { EventComponent } from './components/event/event.component';
+import { AddEventComponent } from './components/event/add-event/add-event.component';
+import { EditEventComponent } from './components/event/edit-event/edit-event.component';
+import { EventListComponent } from './components/event/event-list/event-list.component';
+import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +36,12 @@ import { AuthService } from './services/auth.service';
     NavbarComponent,
     RegisterComponent,
     HomeComponent,
+    EventComponent,
+    AddEventComponent,
+    EditEventComponent,
+    EventListComponent,
+    DetailEventComponent
+
   ],
   imports: [
     BrowserModule,
@@ -36,9 +50,13 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     Ng2Webstorage,
     AppRoutingModule,
+    DateTimePickerModule ,
+    BrowserAnimationsModule,
+    FileUploadModule,
     SidebarModule.forRoot(),
+
   ],
-  providers: [SlidebarService, AuthGuard,AuthService],
+  providers: [SlidebarService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
