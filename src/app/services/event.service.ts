@@ -24,7 +24,6 @@ export class EventService {
     getEventByStatus(status: number): Observable<Event[]> {
         return this.http.get<Event[]>(`${this.basePath}/status/${status}`);
     }
-
     getEventByID(id:string): Observable<Event> {
         return this.http.get<Event>(`${this.basePath}/${id}`);
     }
