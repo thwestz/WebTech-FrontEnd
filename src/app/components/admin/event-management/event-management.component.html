@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <a routerLink="../">
+          <h4 class="card-title">User Management</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <a routerLink="./">
+          <h4 class="card-title">Event Management</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Event List</h4>
+      </div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="admin">All</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="approved">Approved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pending">Pending</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="rejected">rejected</a>
+        </li>
+      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:20%">Event Name</th>
+            <th>Organizer</th>
+            <th style="width:35%">Location</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of eventList">
+            <td>{{event.eName}}</td>
+            <td>{{event.tempUser?.fname}} {{event.tempUser?.lname}}</td>
+            <td>{{event.eLocat}}</td>
+            <td>
+              <div [ngSwitch]="event.status">
+                <span *ngSwitchCase="0">Pending</span>
+                <span *ngSwitchCase="1">Approved</span>
+                <span *ngSwitchCase="2">Reject</span>
+              </div>
+            </td>
+            <td *ngIf="event.status == 0">
+              <button type="button" class="btn btn-success" (click)="approve(event)">Approve</button>
+              <button type="button" class="btn btn-danger" (click)="reject(event)">Reject</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

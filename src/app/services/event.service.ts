@@ -21,6 +21,15 @@ export class EventService {
         return this.http.get<Event[]>(`${this.basePath}`);
     }
 
+    getEventByID(id:string): Observable<Event> {
+        return this.http.get<Event>(`${this.basePath}/${id}`);
+    }
+
+    getEventByUserID() : Observable<Event[]>{
+        this.getSession();
+        return this.http.get<Event[]>(`${this.basePath}/owner/${this.session.uid}`);
+    }
+
     update(event: Event): Observable<Event> {
 
         return this.http.put<Event>(`${this.basePath}/update`, (event) );

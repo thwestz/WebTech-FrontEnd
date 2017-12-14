@@ -40,7 +40,7 @@
     <div class="form-group row">
       <div class="col-sm-10">
         <label for="inputExpried">Close Date : </label>
-        <owl-date-time [(ngModel)]="this.event.expiredAt" dataType="date"></owl-date-time>
+        <owl-date-time [(ngModel)]="closeDate" dataType="date"></owl-date-time>
       </div>
     </div>
     <br>
@@ -76,13 +76,13 @@
           <div class="col-5">
             <div class="form-group col-12">
               <label for="inputStart">Detail : </label>
-              <input type="text" class="form-control" id="inputEventKey-[i]" [(ngModel)]="event.eSubDetail[i].key" placeholder="Big Festival 2017">
+              <input type="text" class="form-control" id="inputEventKey-[i]" [(ngModel)]="event.eSubDetail[i].key" placeholder="Age">
             </div>
           </div>
           <div class="col-5">
             <div class="form-group col-12">
               <label for="inputEnd">Value : </label>
-              <input type="text" class="form-control" id="inputEventValue-[i]" [(ngModel)]="event.eSubDetail[i].value" placeholder="Big Festival 2017">
+              <input type="text" class="form-control" id="inputEventValue-[i]" [(ngModel)]="event.eSubDetail[i].value" placeholder="More than 20">
             </div>
           </div>
           <div class="col-2">

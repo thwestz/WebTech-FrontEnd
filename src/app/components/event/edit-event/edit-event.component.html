@@ -1,3 +1,106 @@
-<p>
-  edit-event works!
-</p>
+<div class="card">
+    <div class="card-body">
+      <div class="form-group row">
+        <label for="inputEvent" class="col-sm-auto col-form-label">
+          <h5>Event Name :</h5>
+        </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputEvent" placeholder="Big Festival 2017" [(ngModel)]="event.eName">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Event Date</h5>
+        </div>
+        <div *ngFor="let eventDate of  sDate;index as i">
+          <div class="row justify-content-center col-12">
+            <div class="col-5">
+              <div class="form-group col-12">
+                <label for="inputStart">Start Date : </label>
+                <owl-date-time [(ngModel)]="sDate[i]" dataType="date"></owl-date-time>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group col-12">
+                <label for="inputEnd">End Date : </label>
+                <owl-date-time [(ngModel)]="eDate[i]" dataType="date"></owl-date-time>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-group col-12">
+                <label for="inputEnd"> </label>
+                <button type="submit-[i]" class="btn btn-primary" (click)="addDate()">+</button>
+                <button *ngIf="sDate.length > 1" type="submit-[i]" class="btn btn-primary" (click)="delDate(i)">-</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <label for="inputExpried">Close Date : </label>
+          <owl-date-time [(ngModel)]="closeDate" dataType="date"></owl-date-time>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <label for="inputLocat">LOGO Url : </label>
+          <input type="text" class="form-control" id="inputLOGO" placeholder="https://i.imgur.com/mqypJyZ.jpg" [(ngModel)]="event.eLOGO">
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="inputLocat">Location : </label>
+          <input type="text" class="form-control" id="inputCity" [(ngModel)]="event.eLocat">
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="inputCap">Capacity : </label>
+          <input type="number" class="form-control" id="inputCap" [(ngModel)]="event.eCap">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="exampleFormControlTextarea1">Main Detail</label>
+        <textarea rows="5" stlye="resize:none" class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="event.eMainDetail"></textarea>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Event Sub-Detail</h5>
+        </div>
+        <div *ngFor="let eventDetail of event.eSubDetail;index as i">
+          <div class="row justify-content-center col-12">
+            <div class="col-5">
+              <div class="form-group col-12">
+                <label for="inputStart">Detail : </label>
+                <input type="text" class="form-control"  [(ngModel)]="event.eSubDetail[i].key" placeholder="Age">
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group col-12">
+                <label for="inputEnd">Value : </label>
+                <input type="text" class="form-control"  [(ngModel)]="event.eSubDetail[i].value" placeholder="More than 20">
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-group col-12">
+                <label for="inputEnd"> </label>
+                <button type="submit-[i]" class="btn btn-primary" (click)="addSubDate()">+</button>
+                <button *ngIf="event.eSubDetail.length > 1" type="submit-[i]" class="btn btn-primary" (click)="delSubDate(i)">-</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center col-12">
+        <div class="form-row">
+          <button type="submit" class="btn btn-primary" (click)="updateEvent()">Create Event</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
