@@ -1,0 +1,45 @@
+
+<div class="container">
+  <h2>Event list</h2>
+  <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="admin">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="approved">Approved</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="pending">Pending</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="rejected">rejected</a>
+      </li>
+    </ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Eventname</th>
+        <th>organizer</th>
+        <th>Eventdate</th>
+        <th>Location</th>
+        <th>Capacity</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of eventList">
+        <td>{{event.eName}}</td>
+        <td>{{event.userID}}</td>
+        <td>{{event.eDate}}</td>
+        <td>{{event.eLocat}}</td>
+        <td>{{event.eCap}}</td>
+        <td>{{event.status}}</td>
+        <td>
+            <button type="button" class="btn btn-secondary" (click)="approve(event)">Approve</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

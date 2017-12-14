@@ -22,13 +22,16 @@ import { AuthGuard } from './auth-guard.service';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
-import { EventComponent } from './components/event/event.component';
-import { AddEventComponent } from './components/event/add-event/add-event.component';
-import { EditEventComponent } from './components/event/edit-event/edit-event.component';
-import { EventListComponent } from './components/event/event-list/event-list.component';
-import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
+import { EventService } from './services/event.service';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventListComponent } from './components/event/event-list/event-list.component';
+import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
+import { EditEventComponent } from './components/event/edit-event/edit-event.component';
+import { AddEventComponent } from './components/event/add-event/add-event.component';
+import { EventComponent } from './components/event/event.component';
+import { AdminComponent } from './components/admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,8 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddEventComponent,
     EditEventComponent,
     EventListComponent,
-    DetailEventComponent
-
+    DetailEventComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarModule.forRoot(),
 
   ],
-  providers: [SlidebarService, AuthGuard, AuthService],
+  providers: [SlidebarService, AuthGuard, AuthService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

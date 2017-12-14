@@ -9,7 +9,6 @@ export enum STATUS {
 
 
 export class Event {
-    STATUS : STATUS;
 
     userID: string;
     eName : string;
