@@ -32,9 +32,11 @@ import { EventComponent } from './components/event/event.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { EventManagementComponent } from './components/admin/event-management/event-management.component';
-import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
+
 import { EventDetailManagementComponent } from './components/admin/event-management/event-detail-management/event-detail-management.component';
 import { HomeEventComponent } from './components/home-event/home-event.component';
+import { MyEventComponent } from './components/event/my-event/my-event.component';
+import { EventSummaryComponent } from './components/event/event-summary/event-summary.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,9 +51,10 @@ import { HomeEventComponent } from './components/home-event/home-event.component
     AdminComponent,
     UserManagementComponent,
     EventManagementComponent,
-    DetailEventComponent,
     EventDetailManagementComponent,
     HomeEventComponent,
+    MyEventComponent,
+    EventSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,13 +63,13 @@ import { HomeEventComponent } from './components/home-event/home-event.component
     HttpClientModule,
     Ng2Webstorage,
     AppRoutingModule,
-    DateTimePickerModule ,
+    DateTimePickerModule,
     BrowserAnimationsModule,
     LoadingModule,
     SidebarModule.forRoot(),
 
   ],
-  providers: [SlidebarService, AuthGuard, AuthService, EventService,UserService],
+  providers: [SlidebarService, AuthGuard, AuthService, EventService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

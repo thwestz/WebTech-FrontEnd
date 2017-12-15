@@ -17,7 +17,7 @@ export class HomeEventComponent implements OnInit {
   loading: boolean;
   eSign: eSign;
   session: Session;
-  registed: boolean;
+  registed: boolean = false;
   constructor(private eventService: EventService, private route: ActivatedRoute, private locals: LocalStorageService) { }
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class HomeEventComponent implements OnInit {
           }
         })
         this.loading = false;
+        console.log(this.registed,this.session)
       })
     });
   }

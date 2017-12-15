@@ -1,0 +1,73 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">My Events</h4>
+      </div>
+      <div class="col-6">
+        <input type="text" class="form-control" placeholder="Search...." (keyup)="search($event.target.value)">
+      </div>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="width:30%">Event Name</th>
+            <th scope="col" style="width:40%">Location</th>
+            <th scope="col">Close Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of eventSearch;index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{list.eName}}</td>
+            <td>{{list.eLocat}}</td>
+            <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
+            <td>
+              <button class="btn btn-secondary" data-toggle="modal" data-target="#eventDetail">Detail</button>
+            </td>
+            <td>
+              <button class="btn btn-danger" >Cancel</button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="eventDetail" tabindex="-1" role="dialog" aria-labelledby="eventDetail" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title justify-content-md-center" id="eventDetail">Event Details</h5>
+        <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="row justify-content-md-between">
+          <div class="col-md-7 mb-3">
+            User : {{editUser.fname}} {{editUser.lname}}
+
+          </div>
+          <div class="col-md-5 mb-3">
+
+            <select class="custom-select" [(ngModel)]="editUser.status">
+              <option [ngValue]="0">Member</option>
+              <option [ngValue]="1">Admin</option>
+            </select>
+          </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">Update</button>
+      </div>
+    </div>
+  </div>

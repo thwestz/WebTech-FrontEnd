@@ -14,8 +14,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { EventManagementComponent } from './components/admin/event-management/event-management.component';
-import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
 import { HomeEventComponent } from './components/home-event/home-event.component';
+import { MyEventComponent } from './components/event/my-event/my-event.component';
+import { EventSummaryComponent } from './components/event/event-summary/event-summary.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
             { path: '', component: EventListComponent, data: { title: 'Event' } },
             { path: 'create', component: AddEventComponent, data: { title: 'Create Event' } },
             { path: 'edit/:_id', component: EditEventComponent, data: { title: 'Edit Event' } },
-            { path: ':_id', component: DetailEventComponent, data: { title: 'Event Detail' } },
+            { path: 'manage/:_id', component: EventSummaryComponent, data: { title: 'Edit Event' } },
+            { path: 'list', component: MyEventComponent, data: { title: 'Event Detail' } }
         ], canActivate: [AuthGuard]
     }, {
         path: 'admin', component: AdminComponent, children: [

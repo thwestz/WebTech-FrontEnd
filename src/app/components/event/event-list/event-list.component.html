@@ -3,8 +3,13 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
+        <a routerLink="./list">
+          <h4 class="card-title">My Events</h4>
+        </a>
+        <p class="card-text">หน้าจอแสดงรายละเอียด Event ที่ลงทะเบียนไว้</div>
+      <div class="card-body">
         <a routerLink="./create">
-          <h4 class="card-title">Create Event</h4>
+          <h4 class="card-title">Create Events</h4>
         </a>
         <p class="card-text">ระบบจะทำการสร้าง Event โดยให้ผู้ใช้ระบุรายละเอียดต่างๆที่กำหนดไว้ เมื่อเสร็จสิ้นระบบจะทำการตรวจสอบและแจ้งสถานะให้ในภายหลัง</p>
       </div>
@@ -16,7 +21,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Event List</h4>
+        <h4 class="card-title">Created Event</h4>
       </div>
       <div class="col-6">
         <input type="text" class="form-control" placeholder="Search...." (keyup)="search($event.target.value)">
@@ -30,13 +35,14 @@
             <th scope="col">Capacity</th>
             <th scope="col">Close Date</th>
             <th scope="col">Status</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let list of eventSearch;index as i">
             <th scope="row">{{i+1}}</th>
             <td>{{list.eName}}</td>
-            <td>{{list.userRegistedID.length}}</td>
+            <td>{{list.eSign.length}}</td>
             <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
             <td>
               <div [ngSwitch]="list.status">
@@ -46,7 +52,8 @@
               </div>
             </td>
             <td>
-              <button class = "btn btn-secondary" routerLink="./edit/{{list._id}}" *ngIf="list.status == 0">Edit</button>
+              <button class="btn btn-secondary" routerLink="./manage/{{list._id}}" *ngIf="list.status == 1">Manage</button>
+              <button class="btn btn-secondary" routerLink="./edit/{{list._id}}" *ngIf="list.status == 0">Edit</button>
             </td>
 
           </tr>
