@@ -10,7 +10,7 @@
       </div>
       <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
         <strong> Created : </strong>
-        <a data-toggle="modal" data-target="#Login" class="alert-link">Click to view</a>
+        <a href="./event/" class="alert-link">Click to view event list.</a>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -33,13 +33,13 @@
           <div class="col-5">
             <div class="form-group col-12">
               <label for="inputStart">Start Date : </label>
-              <owl-date-time [(ngModel)]="sDate[i]" [hideClearButton] = "true" dataType="date"></owl-date-time>
+              <owl-date-time [(ngModel)]="sDate[i]" [hideClearButton]="true" dataType="date"></owl-date-time>
             </div>
           </div>
           <div class="col-5">
             <div class="form-group col-12">
               <label for="inputEnd">End Date : </label>
-              <owl-date-time [(ngModel)]="eDate[i]" [hideClearButton] = "true"  dataType="date"></owl-date-time>
+              <owl-date-time [(ngModel)]="eDate[i]" [hideClearButton]="true" dataType="date"></owl-date-time>
             </div>
           </div>
           <div class="col-2">
@@ -56,7 +56,7 @@
     <div class="form-group row">
       <div class="col-sm-10">
         <label for="inputExpried">Close Date : </label>
-        <owl-date-time [(ngModel)]="closeDate" [hideClearButton] = "true" dataType="date"></owl-date-time>
+        <owl-date-time [(ngModel)]="closeDate" [hideClearButton]="true" dataType="date"></owl-date-time>
       </div>
     </div>
     <br>
@@ -75,7 +75,10 @@
 
       <div class="form-group col-md-2">
         <label for="inputCap">Capacity : </label>
-        <input type="number" min = "0" class="form-control" id="inputCap" [(ngModel)]="event.eCap">
+        <input type="number" min="0" class="form-control" id="inputCap" [(ngModel)]="event.eCap">
+        <div>
+          <p class="text-danger">0 it mean no litmit.</p>
+        </div>
       </div>
     </div>
     <div class="form-row">

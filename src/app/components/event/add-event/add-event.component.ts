@@ -37,6 +37,7 @@ export class AddEventComponent implements OnInit {
     this.eDate = [];
     this.eDate.push(new Date());
     this.event.eSign = [];
+    this.event.eCap = 0;
 
   }
 
@@ -115,6 +116,8 @@ export class AddEventComponent implements OnInit {
       this.eDate = [];
       this.eDate.push(new Date());
       this.event.eSign = [];
+      this.event.eCap = 0;
+      this.success = true;
       this.loading = false;
     },err => {
       this.err.push(`Internal Server Error`)

@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+    this.session = this.localSt.retrieve('token');
     this.err = [];
     this.user = new User();
   }
