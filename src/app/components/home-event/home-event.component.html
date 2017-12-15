@@ -19,9 +19,9 @@
         <h1>
           <small>Location : {{event.eLocat}}</small>
         </h1>
-        <div [ngSwitch]="registed">
-        <button *ngSwitchCase="false" (click)="signIn()" type="button" class="btn btn-primary" style="margin-top:10%;width:100%;font-size:200%">Register</button>
-        <button *ngSwitchCase="true" type="button" class="btn btn-success" style="margin-top:10%;width:100%;font-size:200%">Registed</button>
+        <div>
+        <button *ngIf="registed==false" (click)="signIn()" type="button" class="btn btn-primary" style="margin-top:10%;width:100%;font-size:200%">Register</button>
+        <button *ngIf="registed==true" type="button" class="btn btn-success" style="margin-top:10%;width:100%;font-size:200%">Registed</button>
         </div>
       </div>
       <div style="margin-top:20%;background-color:rgba(0,0,0,0.9);padding:5%;color:white">
