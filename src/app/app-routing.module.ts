@@ -14,18 +14,21 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 import { EventManagementComponent } from './components/admin/event-management/event-management.component';
+import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
+import { HomeEventComponent } from './components/home-event/home-event.component';
+
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent, data: { title: 'Home' } },
+    { path: 'home/event/:_id', component: HomeEventComponent, data: { title: 'Event Detail' } },
     { path: 'register', component: RegisterComponent, data: { title: 'Register' } },
     {
         path: 'event', component: EventComponent, children: [
             { path: '', component: EventListComponent, data: { title: 'Event' } },
             { path: 'create', component: AddEventComponent, data: { title: 'Create Event' } },
             { path: 'edit/:_id', component: EditEventComponent, data: { title: 'Edit Event' } },
-            // { path: ':prodId/edit', component: EditProductComponent, data: { title: 'แก้ไขสินค้า' } },
-            // { path: ':prodId/:serial', component: TrackLogComponent, data: { title: 'ประวัติสินค้า' } }
+            { path: ':_id', component: DetailEventComponent, data: { title: 'Event Detail' } },
         ], canActivate: [AuthGuard]
     }, {
         path: 'admin', component: AdminComponent, children: [

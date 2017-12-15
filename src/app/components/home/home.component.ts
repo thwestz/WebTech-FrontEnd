@@ -8,11 +8,16 @@ import { STATUS, Event } from '../../Models/Event/event.model';
 })
 export class HomeComponent implements OnInit {
   private eventList: Event[];
+  loading : boolean;
+
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.eventService.getEventByStatus(1).subscribe((response) => {
       this.eventList = response;
+      this.loading = false;
     })
   }
 }

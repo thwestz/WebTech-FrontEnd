@@ -34,6 +34,7 @@ import { UserManagementComponent } from './components/admin/user-management/user
 import { EventManagementComponent } from './components/admin/event-management/event-management.component';
 import { DetailEventComponent } from './components/event/detail-event/detail-event.component';
 import { EventDetailManagementComponent } from './components/admin/event-management/event-detail-management/event-detail-management.component';
+import { HomeEventComponent } from './components/home-event/home-event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { EventDetailManagementComponent } from './components/admin/event-managem
     EventManagementComponent,
     DetailEventComponent,
     EventDetailManagementComponent,
+    HomeEventComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Detail } from "./detail.model";
 import { Time } from "./time.model";
 import { User } from "../user.model";
+import { eSign } from "./eSign.model";
 
 export enum STATUS {
     pending,
@@ -17,7 +18,7 @@ export class Event {
     eDate : Time[];
     eLocat : string;
     eCap : number;
-    userRegistedID : string[];
+    eSign : eSign[];
     eMainDetail : string;
     status : STATUS;
     eSubDetail : Detail[];

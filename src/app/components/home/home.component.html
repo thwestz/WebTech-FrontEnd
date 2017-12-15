@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -32,7 +33,7 @@
         <div *ngFor="let event of eventList" class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
                 <a href="event/{{event._id}}">
-                    <img class="card-img-top" src="{{event.eLOGO}}" alt="">
+                    <img class="card-img-top" id = "LOGO" src="{{event.eLOGO}}" alt="">
                 </a>
                 <div class="card-body">
                     <h5 class="card-title">
@@ -42,13 +43,13 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
-                            <h6>{{event.expiredAt | date: 'dd/MM/yy'}}</h6>
+                            <h6>{{event.eDate[0].startDate | date: 'dd/MM/yy'}}</h6>
                         </div>
                         <div class="col-md-8">
                             <h4>Location : {{event.eLocat}}</h4>
                         </div>
                     </div>
-                    <a style="width:100%;" href="evnt/{{event._id}}" class="btn btn-primary" role="button">Join</a>
+                    <a style="width:100%;" href="./home/event/{{event._id}}" class="btn btn-primary" role="button">Join</a>
                 </div>
             </div>
         </div>
