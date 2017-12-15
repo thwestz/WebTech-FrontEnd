@@ -31,7 +31,7 @@
               <small>Location : {{event?.eLocat}}</small>
             </h1>
           </div>
-          <div [ngSwitch]="registed" *ngIf="session != null && event?.expiredAt > today">
+          <div [ngSwitch]="registed" *ngIf="session != null && event?.expiredAt > today && isFull != true">
             <button *ngSwitchCase="false" (click)="signIn()" type="button" class="btn btn-primary btn-lg btn-block" style="margin-top:10%;font-size:200%;color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Register</button>
             <button *ngSwitchCase="true" type="button" class="btn btn-success btn-lg btn-block" style="margin-top:10%;font-size:200%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Registed</button>
           </div>

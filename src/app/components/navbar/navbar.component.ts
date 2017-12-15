@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   user: User;
   session: Session;
   loading: boolean;
-  success: boolean;
   err: string[];
   constructor(private slidebarService: SlidebarService,
     private authService: AuthService,
@@ -56,7 +55,6 @@ export class NavbarComponent implements OnInit {
       this.session = this.localSt.retrieve('token');
       this.router.navigate(['/home']);
       this.user = new User();
-      this.success = true;
       this.loading = false;
     }, err => {
       this.err.push(`Email or Password invalid. !`)
