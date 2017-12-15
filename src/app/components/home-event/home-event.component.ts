@@ -62,7 +62,6 @@ export class HomeEventComponent implements OnInit {
     this.eventService.update(this.event).subscribe(res => {
       this.registed = true;
       this.eSign = new eSign();
-      alert("DONE")
     })
   }
 }

@@ -26,6 +26,7 @@ export class EventListComponent implements OnInit {
       this.loading = false
     })
   }
+  
 
   search(value: string) {
     if (!value) {

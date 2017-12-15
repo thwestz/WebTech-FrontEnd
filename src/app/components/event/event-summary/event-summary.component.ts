@@ -26,6 +26,10 @@ export class EventSummaryComponent implements OnInit {
     this.route.params.subscribe(id => {
       this.eventService.getEventByID(id['_id']).subscribe(res => {
         this.event = res;
+        if(this.event.eSign.length == 0){
+          this.loading = false;
+          return;
+        }
         this.event.eSign.forEach(user => {
           this.userService.getUserByID(user.uid).subscribe(res => {
             res.tempEStatus = user.status;

@@ -35,6 +35,9 @@
             <button *ngSwitchCase="false" (click)="signIn()" type="button" class="btn btn-primary btn-lg btn-block" style="margin-top:10%;font-size:200%;color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Register</button>
             <button *ngSwitchCase="true" type="button" class="btn btn-success btn-lg btn-block" style="margin-top:10%;font-size:200%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Registed</button>
           </div>
+          <div *ngIf = "session != null && isFull == true">
+            <button type="button" class="btn btn-secondary btn-lg btn-block" style="margin-top:10%;font-size:200%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Closed</button>
+          </div>
         </div>
         <div class="rounded" style="margin-top:20%;background-color:rgba(255,255,255,0.9);padding:5% 10% 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:2px solid black;">
           <h3 class="my-3">Conditions</h3>

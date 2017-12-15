@@ -37,10 +37,11 @@ export class UserService {
     update(user: User): Observable<User> {
         return this.http.put<User>(`${this.basePath}`, (user));
     }
-    
+
     getSession() {
         this.session = this.local.retrieve('token');
     }
+
 
 
 }

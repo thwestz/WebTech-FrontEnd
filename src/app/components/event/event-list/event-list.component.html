@@ -41,9 +41,9 @@
         <tbody>
           <tr *ngFor="let list of eventSearch;index as i">
             <th scope="row">{{i+1}}</th>
-            <td>{{list.eName}}</td>
-            <td>{{list.eSign.length}}</td>
-            <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
+            <td>{{list?.eName}}</td>
+            <td>{{list?.eSign.length}}</td>
+            <td>{{list?.expiredAt | date: 'dd/MM/yyyy'}}</td>
             <td>
               <div [ngSwitch]="list.status">
                 <span *ngSwitchCase="0">Pending</span>
