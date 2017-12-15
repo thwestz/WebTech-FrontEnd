@@ -28,6 +28,8 @@ export class EventManagementComponent implements OnInit {
       this.eventSearch = this.eventList;
       this.loading = false;
 
+     
+
     })
 
   }
