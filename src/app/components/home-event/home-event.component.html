@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <br>
   <div class="card" style="width: 20rem;">
@@ -7,6 +8,43 @@
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <a *ngIf = "registed == false && session != null" class="card-link" (click) = "signIn()">Sign-in</a>
       <a href="#" class="card-link">Another link</a>
+=======
+<div style="margin-top:5%" class="container">
+
+
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{event.eLOGO}}" alt="">
+>>>>>>> fd1a813afb81999dc42c168f8f3893ce5f8f6973
+    </div>
+
+    <div class="col-md-4">
+      <div style="background-color:rgba(0,0,0,0.9);padding:5%;color:white">
+        <h1 class="my-4">{{event.eName}}
+        </h1>
+        <h1>
+          <small>Date : {{event.eDate[0].startDate | date: 'dd/MM/yy'}}</small>
+        </h1>
+        <h1>
+          <small>Location : {{event.eLocat}}</small>
+        </h1>
+        <div [ngSwitch]="registed">
+        <button *ngSwitchCase="false" (click)="signIn()" type="button" class="btn btn-primary" style="margin-top:10%;width:100%;font-size:200%">Register</button>
+        <button *ngSwitchCase="true" type="button" class="btn btn-success" style="margin-top:10%;width:100%;font-size:200%">Registed</button>
+        </div>
+      </div>
+      <div style="margin-top:20%;background-color:rgba(0,0,0,0.9);padding:5%;color:white">
+        <h3 class="my-3">Conditions</h3>
+        <ul *ngFor="let detail of event.eSubDetail">
+          <li style="list-style-type: none;font-size:150%">{{detail.key}} : {{detail.value}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3 class="my-3">Description</h3>
+      <p>{{event.eMainDetail}}</p>
     </div>
   </div>
-</div>
