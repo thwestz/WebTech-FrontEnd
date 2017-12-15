@@ -27,7 +27,11 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.session = this.localSt.retrieve('token');
+
+    this.authService.sessionToggle.subscribe(res => {
+      this.session = res
+    })
+    
     this.err = [];
     this.user = new User();
   }
@@ -50,6 +54,7 @@ export class NavbarComponent implements OnInit {
     this.authService.signIn(this.user.email, this.user.password).subscribe(res => {
       this.localSt.store('token', res);
       document.getElementById("closeModal").click();
+      this.session = this.localSt.retrieve('token');
       this.router.navigate(['/home']);
       this.user = new User();
       this.success = true;

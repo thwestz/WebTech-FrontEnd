@@ -11,7 +11,7 @@
         <a class="list-group-item" routerLink="" (click)="_toggleClose()">Home</a>
         <a *ngIf = "isAdmin == true" class="list-group-item" routerLink="/admin" (click)="_toggleClose()">Admin Management</a>
         <a class="list-group-item" routerLink="/event" (click)="_toggleClose()">Events</a>
-        <a class="list-group-item" routerLink="" (click)="_toggleClose();logout()">Log-out</a>
+        <a class="list-group-item" routerLink="/" (click)="_toggleClose();logout()">Log-out</a>
       </div>
     </ng-sidebar>
     <ng-container ng-sidebar-content>

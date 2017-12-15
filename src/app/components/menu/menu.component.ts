@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SlidebarService } from '../../services/slidebar.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Session } from '../../Models/session.model';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
+
 
 
 @Component({
@@ -11,7 +15,8 @@ import { Session } from '../../Models/session.model';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private slidebarService: SlidebarService, private locals: LocalStorageService) { }
+  constructor(private slidebarService: SlidebarService, private locals: LocalStorageService
+    , private router: Router,private authService : AuthService) { }
   _opened: boolean;
   fullname: string;
   isAdmin: boolean = false;
@@ -41,7 +46,8 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    this.locals.clear();
+    this.authService.logout();
+
   }
 
 }
