@@ -28,10 +28,10 @@
             <td>{{list.eLocat}}</td>
             <td>{{list.expiredAt | date: 'dd/MM/yyyy'}}</td>
             <td>
-              <button class="btn btn-secondary" data-toggle="modal" data-target="#eventDetail">Detail</button>
+              <button class="btn btn-secondary" data-toggle="modal" data-target="#eventDetail" (click)="isEvent(list)">Detail</button>
             </td>
             <td>
-              <button class="btn btn-danger" >Cancel</button>
+              <button class="btn btn-danger">Cancel</button>
             </td>
 
           </tr>
@@ -41,8 +41,8 @@
   </div>
 </div>
 
-<div class="modal fade" id="eventDetail" tabindex="-1" role="dialog" aria-labelledby="eventDetail" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-12" id="eventDetail" tabindex="-1" role="dialog" aria-labelledby="eventDetail" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title justify-content-md-center" id="eventDetail">Event Details</h5>
@@ -51,23 +51,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- <div class="row justify-content-md-between">
-          <div class="col-md-7 mb-3">
-            User : {{editUser.fname}} {{editUser.lname}}
-
+        <div class="row justify-content-md-between">
+          <div class="col-md-12 mb-3">
+            {{eventDetail?.eName}}
           </div>
-          <div class="col-md-5 mb-3">
-
-            <select class="custom-select" [(ngModel)]="editUser.status">
-              <option [ngValue]="0">Member</option>
-              <option [ngValue]="1">Admin</option>
-            </select>
+        </div>
+        <div class="row justify-content-md-between">
+          <div class="col-md-12 mb-3">
+            <ngx-qrcode qrc-element-type="img" [qrc-value]="barcode"></ngx-qrcode>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">Update</button>
       </div>
     </div>
   </div>
