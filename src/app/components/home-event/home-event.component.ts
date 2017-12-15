@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
+import {UserService} from '../../services/user.service'
 
 import { Event } from '../../Models/event/event.model';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +21,8 @@ export class HomeEventComponent implements OnInit {
   registed: boolean = false;
   today: number;
   isFull: boolean;
-  constructor(private eventService: EventService, private route: ActivatedRoute, private locals: LocalStorageService) { }
+  org : string;
+  constructor(private eventService: EventService, private route: ActivatedRoute, private locals: LocalStorageService,private userService : UserService) { }
 
   ngOnInit() {
     this.loading = true;
@@ -30,6 +32,9 @@ export class HomeEventComponent implements OnInit {
     this.route.params.subscribe(id => {
       this.eventService.getEventByID(id['_id']).subscribe(res => {
         this.event = res;
+        this.userService.getUserByID(this.event.userID).subscribe(response =>{
+          this.org = response.fname
+        })
         if (this.session == null) {
           return;
         }
