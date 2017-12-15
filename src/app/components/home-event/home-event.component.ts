@@ -17,7 +17,7 @@ export class HomeEventComponent implements OnInit {
   loading: boolean;
   eSign: eSign;
   session: Session;
-  registed: boolean;
+  registed: boolean = false;
   constructor(private eventService: EventService, private route: ActivatedRoute, private locals: LocalStorageService) { }
 
   ngOnInit() {
@@ -27,9 +27,6 @@ export class HomeEventComponent implements OnInit {
     this.route.params.subscribe(id => {
       this.eventService.getEventByID(id['_id']).subscribe(res => {
         this.event = res;
-
-
-
         if (this.session == null) {
           return;
         }

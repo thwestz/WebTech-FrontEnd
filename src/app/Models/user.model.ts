@@ -13,6 +13,8 @@ export class User {
     lname: string;
     status: STATUS;
 
+    
+
     updatedAt: number;
     createdAt: number;
 }

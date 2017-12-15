@@ -1,3 +1,4 @@
+<body style="height:100%;margin:0;">
 <ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -31,8 +32,8 @@
 
     <div class="row">
         <div *ngFor="let event of eventList" class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="event/{{event._id}}">
+            <div class="card h-100" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <a href="./home/event/{{event._id}}">
                     <img class="card-img-top" id = "LOGO" src="{{event.eLOGO}}" alt="">
                 </a>
                 <div class="card-body">
@@ -55,3 +56,4 @@
         </div>
     </div>
 </div>
+</body>
