@@ -1,8 +1,8 @@
 <nav class="navbar navbar-dark bg-info ">
   <a class="navbar-brand" href="">Brand LOGO</a>
-  <a class="navbar-brand ml-auto " style="color:white" data-toggle="modal" data-target="#Login" *ngIf="session == null">Sign-in</a>
+  <a class="navbar-brand ml-auto " style="color:white" data-toggle="modal" data-target="#Login" *ngIf="session == undefined">Sign-in</a>
   <a class="navbar-brand" style="color:white" routerLink="/register" *ngIf="session == null">Sign-Up</a>
-  <button class="navbar-toggler" type="button" style="cursor:pointer;" (click)="_toggleSidebar()" *ngIf="session != null">
+  <button class="navbar-toggler" type="button" style="cursor:pointer;" (click)="_toggleSidebar()" *ngIf="session != undefined">
     <span class="navbar-toggler-icon"></span>
   </button>
 </nav>

@@ -27,11 +27,10 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.authService.sessionToggle.subscribe(res => {
-      this.session = res
+    this.session = this.localSt.retrieve('token');
+    this.localSt.observe('token').subscribe(res => {
+      this.session = res;
     })
-    
     this.err = [];
     this.user = new User();
   }

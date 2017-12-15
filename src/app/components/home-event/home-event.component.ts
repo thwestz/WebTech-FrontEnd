@@ -18,10 +18,13 @@ export class HomeEventComponent implements OnInit {
   eSign: eSign;
   session: Session;
   registed: boolean = false;
+  today: number;
+  isFull: boolean;
   constructor(private eventService: EventService, private route: ActivatedRoute, private locals: LocalStorageService) { }
 
   ngOnInit() {
     this.loading = true;
+    this.today = new Date().getTime();
     this.session = this.locals.retrieve('token');
     this.eSign = new eSign();
     this.route.params.subscribe(id => {
@@ -40,6 +43,13 @@ export class HomeEventComponent implements OnInit {
             this.registed = false;
           }
         })
+
+        if (this.event.eCap > this.event.eSign.length) {
+          this.isFull = false;
+        }else {
+          this.isFull = true;
+        }
+
         this.loading = false;
       })
     });

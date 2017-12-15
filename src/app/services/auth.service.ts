@@ -27,14 +27,6 @@ export class AuthService {
     getSession(id : string) : Observable<Session>{
         return this.http.get<Session>(`${this.basePath}/${id}`);
     }
-    session : Session
-    sessionToggle: EventEmitter<Session> = new EventEmitter<Session>();
 
-    logout(){
-        this.localSt.clear();
-        this.session = this.localSt.retrieve('token');
-        this.sessionToggle.emit(this.session);
-        this.router.navigate(['./home'])
-    }
     
 }
