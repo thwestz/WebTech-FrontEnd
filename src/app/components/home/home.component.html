@@ -32,9 +32,15 @@
 
     <div class="row">
         <div *ngFor="let event of eventList" class="col-lg-4 col-sm-6 portfolio-item">
+<<<<<<< HEAD
             <div class="card h-100" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                 <a href="./home/event/{{event._id}}">
                     <img class="card-img-top" id = "LOGO" src="{{event.eLOGO}}" alt="">
+=======
+            <div class="card h-100">
+                <a href="/home/event/{{event._id}}">
+                    <img class="card-img-top" id="LOGO" src="{{event.eLOGO}}" alt="">
+>>>>>>> 4affc41ceb39a89036eafad5d485bb8b99eb05f0
                 </a>
                 <div class="card-body">
                     <h5 class="card-title">
@@ -44,13 +50,25 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
+                            <h5 class="text-danger" *ngIf="today > event.expiredAt">
+                                <p>CLOSED</p>
+                            </h5>
+
+                            <h5 class="text-success" *ngIf="today < event.expiredAt ">
+                                <p>OPEN</p>
+                            </h5>
                             <h6>{{event.eDate[0].startDate | date: 'dd/MM/yy'}}</h6>
                         </div>
                         <div class="col-md-8">
-                            <h4>Location : {{event.eLocat}}</h4>
+                            <div class="row">
+                                <b>Location</b>
+                            </div>
+                            <h6>
+                                <p>{{event.eLocat}}</p>
+                            </h6>
                         </div>
                     </div>
-                    <a style="width:100%;" href="./home/event/{{event._id}}" class="btn btn-primary" role="button">Join</a>
+                    <a style="width:100%;" href="./home/event/{{event._id}}" class="btn btn-primary" role="button" *ngIf="today < event.expiredAt ">Join</a>
                 </div>
             </div>
         </div>

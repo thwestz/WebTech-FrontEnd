@@ -32,7 +32,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Event Name</th>
-            <th scope="col">Capacity</th>
+            <th scope="col">Registed</th>
             <th scope="col">Close Date</th>
             <th scope="col">Status</th>
             <th scope="col"></th>
@@ -52,7 +52,8 @@
               </div>
             </td>
             <td>
-              <button class="btn btn-secondary" routerLink="./manage/{{list._id}}" *ngIf="list.status == 1">Manage</button>
+                <button class="btn btn-secondary"  *ngIf="list.status == 1 && list.expiredAt < today">Closed</button>  
+              <button class="btn btn-secondary" routerLink="./manage/{{list._id}}" *ngIf="list.status == 1 && list.expiredAt > today">Manage</button>
               <button class="btn btn-secondary" routerLink="./edit/{{list._id}}" *ngIf="list.status == 0">Edit</button>
             </td>
 

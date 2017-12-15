@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
-import { NgxBarcodeModule } from 'ngx-barcode';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { LoadingModule } from 'ngx-loading';
 
@@ -58,11 +58,11 @@ import { EventSummaryComponent } from './components/event/event-summary/event-su
   ],
   imports: [
     BrowserModule,
-    NgxBarcodeModule,
     FormsModule,
     HttpClientModule,
     Ng2Webstorage,
     AppRoutingModule,
+    NgxQRCodeModule,
     DateTimePickerModule,
     BrowserAnimationsModule,
     LoadingModule,

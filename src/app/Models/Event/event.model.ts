@@ -11,7 +11,7 @@ export enum STATUS {
 
 
 export class Event {
-
+    _id : string;
     userID: string;
     eName : string;
     eLOGO : string;

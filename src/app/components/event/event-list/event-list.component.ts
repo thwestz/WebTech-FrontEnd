@@ -14,8 +14,10 @@ export class EventListComponent implements OnInit {
   eventList: Event[];
   eventSearch: Event[];
   loading: boolean;
+  today : number;
   ngOnInit() {
     this.loading = true;
+    this.today = new Date().getTime();
     this.eventList = [];
     this.eventSearch = [];
     this.eventService.getEventByUserID().subscribe(res => {

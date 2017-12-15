@@ -1,3 +1,60 @@
-<p>
-  event-summary works!
-</p>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop:true}"></ngx-loading>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Registed List</h4>
+      </div>
+      <div class="col-12">
+        <div class="col-md-12 mb-3">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="err.length > 0">
+            <strong> Error : </strong> {{err}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+            <strong> Updated : </strong> User already to update.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputPassword" placeholder="QRCode" [(ngModel)]="QRCode">
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary" (click)="updateStatus()">Confirm QRCode</button>
+          </div>
+        </div>
+      </div>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userList ;index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{user.email}}</td>
+            <td>{{user.fname}} {{user.lname}}</td>
+            <td>
+              <div [ngSwitch]="user.tempEStatus">
+                <span *ngSwitchCase="0">Pending</span>
+                <span *ngSwitchCase="1">Check-In</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

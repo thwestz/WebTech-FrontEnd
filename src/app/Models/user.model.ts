@@ -17,4 +17,6 @@ export class User {
 
     updatedAt: number;
     createdAt: number;
+
+    tempEStatus : number;
 }

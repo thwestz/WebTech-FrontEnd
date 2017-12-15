@@ -7,6 +7,7 @@ export enum STATUS {
 }
 
 export class eSign {
+    _id : string;
     uid : string;
     status : STATUS;
 }
