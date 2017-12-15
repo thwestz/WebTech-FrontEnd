@@ -56,6 +56,7 @@ export class NavbarComponent implements OnInit {
       this.loading = false;
     }, err => {
       this.err.push(`Email or Password invalid. !`)
+      this.user = new User();
       this.loading = false;
       return;
     })
