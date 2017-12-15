@@ -27,9 +27,6 @@ export class HomeEventComponent implements OnInit {
     this.route.params.subscribe(id => {
       this.eventService.getEventByID(id['_id']).subscribe(res => {
         this.event = res;
-
-
-
         if (this.session == null) {
           return;
         }
@@ -44,7 +41,6 @@ export class HomeEventComponent implements OnInit {
           }
         })
         this.loading = false;
-        console.log(this.registed,this.session)
       })
     });
   }
